@@ -1,0 +1,43 @@
+close all;
+clear all;
+m = 20000;
+n = 400;
+
+coherence = 0;
+
+% Incoherent, ill-conditioned matrix
+A = make_matrix(m,n, coherence);
+
+% Coherent, ill-conditioned matrix
+%A = make_matrix(m,n, 1);
+
+b= rand(m,1); 
+
+% Testing for different gammas
+gammastep = 1;
+gammamin = 2;
+gammamax = 10;
+gammavec = gammamin:gammastep:gammamax;
+gammavec = [1.2 gammavec];
+timevec_minres = zeros(length(gammavec), 1);
+
+for i = 1:length(gammavec)
+        tic;
+        [x_minres, ~, ~, ~] = blendenpik(A,b, gammavec(i), 'MINRES');
+        timevec_minres(i) = toc;
+end   
+
+%%
+timevec_lsqr = zeros(length(gammavec), 1);
+for i = 1:length(gammavec)
+        tic;
+        [x_lsqr, ~, ~, ~] = blendenpik(A,b, gammavec(i), 'LSQR');
+        timevec_lsqr(i) = toc;
+end   
+%% Plotting 
+
+if 
+
+plot(gammavec, timevec_minres, '-o', gammavec, timevec_lsqr, '-*');
+xlabel('\gamma'); ylabel('Time (sec)'); 
+legend('MINRES', 'LQSR');

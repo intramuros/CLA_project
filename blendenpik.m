@@ -1,4 +1,6 @@
 function [ x, flag,  iter, resvec ] = blendenpik( A, b, gamma, type)
+
+
 if  strcmp(type, 'LSQR')
     MINRES_flag=0;
 elseif strcmp(type, 'MINRES')
@@ -22,7 +24,7 @@ M = [A; zeros((m_tilde-m),n) ]; % Matlabs DCT can also do padding
 % up fftw
 
 for i=1:maxit_bp
-    D = diag(sign(rand(m_tilde,1)- 0.5));
+    D = spdiags(sign(rand(m_tilde,1)- 0.5), 0, m_tilde, m_tilde);
     
     
     M = dct(D*M);
@@ -48,4 +50,4 @@ for i=1:maxit_bp
     
     
 end
-
+end

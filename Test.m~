@@ -1,6 +1,6 @@
 %% Test runs
 close all;
-clear all;
+%clear all;
 m=20000;
 n= 400;
 
@@ -30,6 +30,5 @@ rminres= norm(b-A*x)/norm(b);
 x= blendenpik(A,b, gamma, 'LSQR');
 
 rLSQR= norm(b-A*x)/norm(b);
-
 
 
