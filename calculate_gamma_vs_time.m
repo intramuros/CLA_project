@@ -1,10 +1,12 @@
 function [timevec_minres, timevec_lsqr] = calculate_gamma_vs_time(A, b, gammavec, average_over)
-   %% If iterations is > 1 calculates average time over iterations
-   timevec_minres = zeros(length(gammavec), length(itervec));
-   timevec_lsqr = zeros(length(gammavec), length(itervec));
+   %% If average_over is > 1 calculates average time over iterations
+   
+   
+   timevec_minres = zeros(length(gammavec), average_over);
+   timevec_lsqr = zeros(length(gammavec), average_over);
    
 if average_over < 1
-    error('average_over must be larger or equal 1');
+    error('average_over must be larger than or equal to 1');
 end
    
    

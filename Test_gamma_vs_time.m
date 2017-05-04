@@ -2,11 +2,11 @@ close all;
 clear all;
 
 % set matrix dimensioins
-m = 40000;
-n = 2000;
+m = 20000;
+n = 400;
 
 % set coherence
-is_coherent = false;
+is_coherent = true;
 
 % Make an ill-conditioned matrix
 A = make_matrix(m,n, is_coherent);
