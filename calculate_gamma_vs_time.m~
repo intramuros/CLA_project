@@ -1,4 +1,4 @@
-function [timevec_minres, timevec_lsqr] = calculate_gamma_vs_time(A, b, gammavec, average_over)
+iffunction [timevec_minres, timevec_lsqr] = calculate_gamma_vs_time(A, b, gammavec, average_over)
    %% If average_over is > 1 calculates average time over iterations
    
    
@@ -22,6 +22,8 @@ for iter = 1:average_over
 end
 
 if average_over > 1
-   timevec_minres = mean(timevec_minres, 2);
-   timevec_lsqr = mean(timevec_lsqr, 2);
+   timevec_minres = mean(timevec_min) 
+end
+
+
 end

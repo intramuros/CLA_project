@@ -2,7 +2,7 @@ close all;
 clear all;
 
 % set matrix dimensioins
-m = 20000;
+m = 10000;
 n = 400;
 
 % set coherence
@@ -24,7 +24,7 @@ gammavec = gamma_start:gamma_step:gamma_max;
 gammavec = [1.09 gammavec];
 
 %
-average_over = 1;
+average_over = 2;
 
 [timevec_minres, timevec_lsqr] = calculate_gamma_vs_time(A, b, gammavec, average_over);
 
@@ -39,6 +39,11 @@ end
 
 size_str = [int2str(m) '-by-' int2str(n)];
 title_str = [size_str coh_str ', ill-conditioned matrix'];
+
+if average_over > 1
+    avg_str = ['(average over ' int2str(average_over) ' runs)'];
+    title_str = [title_str char(10) avg_str];
+end
 
 plot(gammavec, timevec_minres, '-o', gammavec, timevec_lsqr, '-*');
 grid on
