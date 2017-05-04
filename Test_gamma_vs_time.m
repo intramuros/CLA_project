@@ -2,7 +2,7 @@ close all;
 clear all;
 
 % set matrix dimensioins
-m = 10000;
+m = 20000;
 n = 400;
 
 % set coherence
@@ -24,7 +24,7 @@ gammavec = gamma_start:gamma_step:gamma_max;
 gammavec = [1.09 gammavec];
 
 %
-average_over = 2;
+average_over = 1;
 
 [timevec_minres, timevec_lsqr] = calculate_gamma_vs_time(A, b, gammavec, average_over);
 
@@ -49,4 +49,4 @@ plot(gammavec, timevec_minres, '-o', gammavec, timevec_lsqr, '-*');
 grid on
 title(title_str);
 xlabel('\gamma'); ylabel('Time (sec)'); 
-legend('MINRES', 'LQSR');
+legend('MINRES', 'LSQR');

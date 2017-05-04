@@ -39,7 +39,7 @@ for i=1:maxit_bp
     kappa_rec =rcond(R);
     if kappa_rec > 5*eps % Compare with Matlabs machine accuracy
         if(MINRES_flag)
-            [x,flag,~,iter, resvec] = minres((A'*A),(A'*b),tol*norm(A'*b), maxit,R', R);
+            [x,flag,~,iter, resvec] = minres((A'*A),(A'*b),tol, maxit,R', R);
             return;
         else
             [x,flag,~,iter, resvec] = lsqr(A,b,tol,maxit,R);
