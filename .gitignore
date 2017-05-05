@@ -1,4 +1,5 @@
 # Ignore figures and everything that is not matlab
 */
 !*.m
+*.eps
 
