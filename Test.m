@@ -1,11 +1,11 @@
 %% Test runs
 close all;
-clear all;
+clear all
 m=20000;
 n= 400;
 
 gamma = 4;
-incoherent = 1;
+incoherent =1;
 %% Incoherent, ill-conditioned matrix
 if incoherent
     rng(11);
@@ -30,6 +30,3 @@ rminres= norm(b-A*x)/norm(b);
 x= blendenpik(A,b, gamma, 'LSQR');
 
 rLSQR= norm(b-A*x)/norm(b);
-
-
-
